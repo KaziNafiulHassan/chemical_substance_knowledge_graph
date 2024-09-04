@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Search Results: {{ search_type }}</h1>
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DTXSID</th>
+                    <th>Concentration</th>
+                    <th>Station</th>
+                    <th>Country</th>
+                    {% if search_type != "Substance Name" %}
+                    <th>{{ search_type }}</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.name }}</td>
+                    <td>{{ result.dtxsid }}</td>
+                    <td>{{ result.concentration_value }}</td>
+                    <td>{{ result.station }}</td>
+                    <td>{{ result.country }}</td>
+                    {% if search_type != "Substance Name" %}
+                    <td>{{ result.filter_value }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+    </div>
+</body>
+</html>

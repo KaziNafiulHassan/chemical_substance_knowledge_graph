@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Details for {{ name }}</h1>
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Station</th>
+                    <th>Country</th>
+                    <th>Concentration Value</th>
+                    <th>Species</th>
+                    <th>Toxicity Value (mg/L)</th>
+                    <th>Toxicity Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in details %}
+                <tr>
+                    <td>{{ detail.station }}</td>
+                    <td>{{ detail.country }}</td>
+                    <td>{{ detail.concentration_value }}</td>
+                    <td>{{ detail.species }}</td>
+                    <td>{{ detail.tox_value }}</td>
+                    <td>{{ detail.tox_stat }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+    </div>
+</body>
+</html>
