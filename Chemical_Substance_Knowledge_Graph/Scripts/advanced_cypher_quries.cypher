@@ -1,6 +1,7 @@
 // Add Relationships Between Chemicals Based on Similarity:
 // eg.: linking chemicals that belong to the same chemical family:
-MATCH (c1:ChemicalSubstance), (c2:ChemicalSubstance)
+MATCH (c1:ChemicalSubstance)
+MATCH (c2:ChemicalSubstance)
 WHERE c1.family = c2.family AND c1.DTXSID <> c2.DTXSID
 CREATE (c1)-[:SIMILAR_TO]->(c2)
 

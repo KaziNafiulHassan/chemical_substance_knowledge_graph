@@ -1,4 +1,4 @@
-Example Queries
+// Example Queries
 
 // Retrieve All Chemicals and Their Hazards:
 MATCH (c:ChemicalSubstance)-[r:HAS_HAZARD]->(h:HazardInfo)
